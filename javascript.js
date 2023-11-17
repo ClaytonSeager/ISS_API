@@ -1,7 +1,15 @@
 let longField = document.querySelector("#long");
 let latField = document.querySelector("#lat");
 let time = document.querySelector("#time");
+let refreshButton = document.querySelector("#refresh");
 let issData = [];
+
+refreshButton.addEventListener('click', refreshData);
+
+function refreshData() {
+    fetchISSAPI();
+    console.log('Button Clicked');
+}
 
 async function fetchISSAPI() {
     try {
