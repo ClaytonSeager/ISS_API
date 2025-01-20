@@ -4,10 +4,45 @@ body {
     justify-content: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 50vh;
-    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=872&q=80');
+    height: 100vh;
+    background-image: url('https://images-assets.nasa.gov/image/iss072e397228/iss072e397228~orig.jpg');
+    margin: 0;
 }
+
+div {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.refreshing {
+    transform: scale(1.05);
+}
+
 h2, h4 {
     color: whitesmoke;
+    margin: 10px 0;
+}
+
+#refresh {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+#refresh:hover {
+    background-color: #45a049;
+}
+
+#refresh:active {
+    transform: scale(0.95);
 }
 

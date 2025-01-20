@@ -2,20 +2,23 @@ let longField = document.querySelector("#long");
 let latField = document.querySelector("#lat");
 let time = document.querySelector("#time");
 let refreshButton = document.querySelector("#refresh");
-let issData = [];
+let issData = null;
 
 refreshButton.addEventListener('click', refreshData);
 
 function refreshData() {
     fetchISSAPI();
-    console.log('Button Clicked');
+    document.querySelector('div').classList.add('refreshing');
+    setTimeout(() => {
+        document.querySelector('div').classList.remove('refreshing');
+    }, 250);
 }
 
 async function fetchISSAPI() {
     try {
         const response = await fetch('http://api.open-notify.org/iss-now.json')
         const data = await response.json();
-        issData.push(data);
+        issData = data;
         pushLocations();
         pushTimes();
     } catch (e) {
@@ -24,15 +27,15 @@ async function fetchISSAPI() {
 }
 
 function pushLocations() {
-    longField.textContent = `Longitude: ${issData[0].iss_position.longitude}`;
-    latField.textContent = `Latitude: ${issData[0].iss_position.latitude}`;
+    longField.textContent = `Longitude: ${parseFloat(issData.iss_position.longitude).toFixed(4)}°`;
+    latField.textContent = `Latitude: ${parseFloat(issData.iss_position.latitude).toFixed(4)}°`;
 }
 function pushTimes() {
-    let timestamp = (issData[0].timestamp) * 1000;
+    let timestamp = (issData.timestamp) * 1000;
     let dateObj = new Date(timestamp);
     let date = dateObj.toLocaleDateString('en-US')
     let time2 = dateObj.toLocaleTimeString('en-US')
     time.textContent = `Timestamp: ${date} at ${time2}`;
 }
 fetchISSAPI();
-console.log(issData[0])
+console.log(issData)
