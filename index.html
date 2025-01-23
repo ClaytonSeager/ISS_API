@@ -2,18 +2,77 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ISS API Practice</title>
+    <title>ISS Tracker | Live Space Station Monitor</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-<div>
-    <H2>The International Space Station is located at</H2>
-    <h4 id="lat"></h4>
-    <h4 id="long"></h4>
-    <h4 id="time"></h4>
-    <button id="refresh">Refresh Data</button>
+<div class="container">
+    <header>
+        <h1><i class="fas fa-satellite"></i> ISS Live Tracker</h1>
+        <div class="stats">
+            <div class="stat-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <span id="speed">Calculating...</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-ruler-vertical"></i>
+                <span id="altitude">408 km</span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span id="orbit-time">92.68 minutes/orbit</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="map-container">
+            <div id="map"></div>
+            <div class="coordinates">
+                <div id="lat" class="coordinate"><i class="fas fa-latitude"></i> Latitude: --.-°</div>
+                <div id="long" class="coordinate"><i class="fas fa-longitude"></i> Longitude: --.-°</div>
+            </div>
+        </div>
+
+        <div class="info-panels">
+            <div class="panel crew-panel">
+                <h3><i class="fas fa-user-astronaut"></i> Current Crew</h3>
+                <div id="crew-list" class="crew-grid"></div>
+            </div>
+
+            <div class="panel data-panel">
+                <h3><i class="fas fa-chart-line"></i> Live Statistics</h3>
+                <div class="live-stats">
+                    <div class="stat">
+                        <span class="label">Orbital Period</span>
+                        <span class="value">92.68 minutes</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Mass</span>
+                        <span class="value">419,725 kg</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Length</span>
+                        <span class="value">73 meters</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Solar Array Span</span>
+                        <span class="value">108 meters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="refresh" class="refresh-button">
+        <i class="fas fa-sync-alt"></i> Refresh Data
+    </button>
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script type="text/javascript" src="javascript.js"></script>
 </body>
 </html>

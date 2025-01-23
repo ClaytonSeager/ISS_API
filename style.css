@@ -1,48 +1,222 @@
+:root {
+    --primary-color: #00ff9d;
+    --secondary-color: #0066ff;
+    --background-dark: #0a1929;
+    --panel-bg: rgba(10, 25, 41, 0.95);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --accent-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--background-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    background-image: url('https://images.nasa.gov/images/as17-148-22727~orig.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: rgba(10, 25, 41, 0.9);
+    backdrop-filter: blur(10px);
+    min-height: 100vh;
+}
+
+/* Header Layout */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    background: var(--panel-bg);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+h1 {
+    font-size: 2rem;
+    color: var(--text-primary);
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    background-image: url('https://images-assets.nasa.gov/image/iss072e397228/iss072e397228~orig.jpg');
-    margin: 0;
+    gap: 0.5rem;
 }
 
-div {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
+.stats {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Map Container */
+.map-container {
+    background: var(--panel-bg);
+    padding: 1rem;
     border-radius: 15px;
-    text-align: center;
-    transition: transform 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
 }
 
-.refreshing {
-    transform: scale(1.05);
+#map {
+    height: 500px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
 }
 
-h2, h4 {
-    color: whitesmoke;
-    margin: 10px 0;
+.coordinates {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
 }
 
-#refresh {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
+.coordinate {
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+/* Info Panels Layout */
+.info-panels {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.panel {
+    flex: 1;
+    background: var(--panel-bg);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.panel h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Crew Panel */
+.crew-grid {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.crew-member {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.crew-member:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Live Stats Panel */
+.live-stats {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.stat {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat .label {
+    color: var(--text-secondary);
+}
+
+.stat .value {
+    font-weight: 500;
+}
+
+/* Refresh Button */
+.refresh-button {
+    display: block;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    background: var(--accent-gradient);
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
+    color: white;
+    font-family: inherit;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 16px;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
-#refresh:hover {
-    background-color: #45a049;
+.refresh-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
 }
 
-#refresh:active {
-    transform: scale(0.95);
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .info-panels {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    #map {
+        height: 400px;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
 }
 
