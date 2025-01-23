@@ -34,7 +34,6 @@ body {
     min-height: 100vh;
 }
 
-/* Header Layout */
 header {
     display: flex;
     justify-content: space-between;
@@ -68,7 +67,6 @@ h1 {
     font-size: 0.9rem;
 }
 
-/* Map Container */
 .map-container {
     background: var(--panel-bg);
     padding: 1rem;
@@ -97,7 +95,6 @@ h1 {
     font-size: 1.1rem;
 }
 
-/* Info Panels Layout */
 .info-panels {
     display: flex;
     gap: 2rem;
@@ -120,7 +117,6 @@ h1 {
     gap: 0.5rem;
 }
 
-/* Crew Panel */
 .crew-grid {
     display: grid;
     gap: 0.75rem;
@@ -138,7 +134,6 @@ h1 {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Live Stats Panel */
 .live-stats {
     display: grid;
     gap: 0.75rem;
@@ -161,7 +156,6 @@ h1 {
     font-weight: 500;
 }
 
-/* Refresh Button */
 .refresh-button {
     display: block;
     margin: 0 auto;
@@ -206,7 +200,6 @@ h1 {
     }
 }
 
-/* Custom scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
